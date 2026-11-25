@@ -1,0 +1,10 @@
+{
+  "surface_altitude": "orog",
+  "surface_temperature": "t",
+  "surface_snow_amount": "sdwe",
+  "surface_snow_amount.missing_ocean": "zero",
+  "surface_snow_amount.convention": "wps_ncep_gfs",
+  "soil_temperature": "st",
+  "volume_fraction_of_condensed_water_in_soil": "soilw",
+  "volume_fraction_of_condensed_water_in_soil.maximum": "0.468"
+}

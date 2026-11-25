@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mpas-init"
+version = "0.1.0"
+description = "Global MPAS atmospheric initialization with PyTorch numerics"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE", "PERMISSIONS.md", "NOTICE"]
+authors = [{ name = "IC Weather LLC" }]
+dependencies = ["torch>=2.8,<2.16", "netCDF4>=1.7"]
+
+[project.optional-dependencies]
+grib = ["eccodes>=2.43"]
+test = ["pytest>=8"]
+
+[project.scripts]
+mpas-init = "mpas_init.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: complete bundled-input source-to-file examples",
+           "compiler: experimental Inductor execution and derivative qualification"]
+
+[tool.ruff.lint]
+select = ["E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test modules import pytest fixtures from each other by name.
+"tests/*" = ["F401", "F811"]
